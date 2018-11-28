@@ -1,0 +1,77 @@
+﻿
+
+
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Serve_InnerLayout";
+}
+
+<h2>Serve_InnerLayout</h2>
+
+
+<html>
+
+
+<head>
+
+
+    @*<title>
+            My html website
+        </title>*@
+    <h2>Freeinner Layout</h2>
+    <link rel="stylesheet" href="~/css/newstyle.css" type="text/css" />
+ 
+    @*<script src="/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+
+    <div class="wrapper">
+        @*Wrapper div*@
+
+        <div class="heading" align="center">
+            We Serve
+            <div align="center"><img src="~/pics/id.png" style="width:200px;height:100px;" /></div>
+        </div>
+
+        <div class="navigation">
+
+            <a href="@Url.Action("HomePage","Home", new {area="admin"})">Home</a>
+            <a href="@Url.Action("AboutUs","Home", new {area="admin"})">About Us</a>
+            <a href="@Url.Action("Index","Serving", new {area="admin"})">Our Services</a>
+            <a href="@Url.Action("ViewConfirmations","Serving", new {area="admin"})">View Confirmed Bookings</a>
+            <a href="@Url.Action("Login","Home", new {area="admin"})">SignOut</a>
+
+        </div>
+
+
+        <div class="content">
+
+            @RenderBody()
+            @*@Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)*@
+        </div>
+
+        @*<div class="sidebar">
+                <div align="right"><img src="~/pics/cart.png" style="width:200px;height:100px;" /></div>
+            </div>*@
+
+
+
+        <div class="footer" align="center">
+            Copyright WeServe Publications
+        </div>
+
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+
+
+</html>

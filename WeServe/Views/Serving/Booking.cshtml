@@ -1,0 +1,56 @@
+﻿@using System.Web.Optimization
+@model WeServe.Models.BookingModel
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/Serve_InnerLayout.cshtml";
+
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+<h2>Booking</h2>
+
+@using (@Html.BeginForm("Booking", "Serving", FormMethod.Post))
+{
+
+    @*<input type="hidden" value=@Model.bookid name="bookid"/>*@
+    <input type="hidden" value=@Model.serviceid name="serviceid" />
+    <input type="hidden" value=@Model.userid name="userid" />
+
+    <div>
+        <bold> <label class="col-sm-5 control-label">@Model.service</label></bold>
+    </div>
+    <div>
+        <bold> <label class="col-sm-5 control-label">@Model.description</label></bold>
+    </div>
+    @*<div class="col-sm-6">
+            <input type="text" class="form-control" value="@Model.service" name="service" />
+            @Html.ValidationMessageFor(x => x.service)
+        </div>*@
+    <div>
+        <label class="col-sm-5 control-label">Mention your Requirement</label>
+        <div class="col-sm-6">
+            <br />
+            <input type="text" class="form-control" value="@Model.description" name="description" placeholder="Enter your requirement" />
+            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-5 control-label">Date</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" value="@Model.bookdate" name="bookdate" placeholder="Enter tentative booking date" />
+            @Html.ValidationMessageFor(x => x.bookdate)
+        </div>
+    </div>
+    <div>
+        <input type="submit" value="Book Now" />
+    </div>
+
+
+
+}
+@section scripts {
+     @Scripts.Render("~/bundles/jqueryval")
+}

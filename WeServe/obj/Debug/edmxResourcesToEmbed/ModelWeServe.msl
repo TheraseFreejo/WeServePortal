@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="weserveEntities">
+    <EntitySetMapping Name="tbservices">
+      <EntityTypeMapping TypeName="Models.tbservice">
+        <MappingFragment StoreEntitySet="tbservice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbbookings">
+      <EntityTypeMapping TypeName="Models.tbbooking">
+        <MappingFragment StoreEntitySet="tbbooking">
+          <ScalarProperty Name="confirmstatus" ColumnName="confirmstatus" />
+          <ScalarProperty Name="bookdate" ColumnName="bookdate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="serviceid" ColumnName="serviceid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbUsers">
+      <EntityTypeMapping TypeName="Models.TbUser">
+        <MappingFragment StoreEntitySet="TbUser">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Get_Allbookings" FunctionName="Models.Store.Get_Allbookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Models.Get_Allbookings_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="serviceid" ColumnName="serviceid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="bookdate" ColumnName="bookdate" />
+          <ScalarProperty Name="Id1" ColumnName="Id1" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="charge" ColumnName="charge" />
+          <ScalarProperty Name="description1" ColumnName="description1" />
+          <ScalarProperty Name="UserId1" ColumnName="UserId1" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Bookings" FunctionName="Models.Store.Get_Bookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Models.Get_Bookings_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="bookdate" ColumnName="bookdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Fetch_Bookings" FunctionName="Models.Store.Fetch_Bookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Models.Fetch_Bookings_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="bookdate" ColumnName="bookdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Edit_Booking" FunctionName="Models.Store.Edit_Booking" />
+    <FunctionImportMapping FunctionImportName="getConfirmedBookings" FunctionName="Models.Store.getConfirmedBookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Models.getConfirmedBookings_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id1" ColumnName="id1" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="bookdate" ColumnName="bookdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fetchConfirmedBookings" FunctionName="Models.Store.fetchConfirmedBookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Models.fetchConfirmedBookings_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="bookdate" ColumnName="bookdate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

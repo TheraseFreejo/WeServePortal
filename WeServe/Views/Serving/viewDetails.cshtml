@@ -1,0 +1,37 @@
+﻿
+@model IEnumerable<WeServe.tbservice>
+@{
+    ViewBag.Title = "viewDetails";
+    Layout = "~/Views/Shared/Serve_InnerLayout.cshtml";
+}
+
+
+<h2>viewDetails</h2>
+
+<div class="form-group">
+    <select class="form-control input-sm" required="" id="lstServices">
+        <option value="0">Select Service</option>
+        @{
+            foreach (var obj in ViewBag.data)
+            {
+                <option value="@obj.serviceId">@obj.title</option>
+            }
+        }
+    </select>
+</div>
+<div id="dvServices"></div>
+
+@section scripts{
+
+<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+                     
+            $("#lstServices").change(function () {             
+                var categoryId = $("#lstServices").val();
+                $("#dvServices").load('@(Url.Action("GetService", "Serving", null, Request.Url.Scheme))?id=' + categoryId);
+        });
+    });
+    </script>
+}

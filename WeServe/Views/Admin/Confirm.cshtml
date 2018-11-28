@@ -1,0 +1,50 @@
+﻿
+@model WeServe.Models.BookingModel
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/Serve_AdminLayout.cshtml";
+
+}
+
+<h2>Booking</h2>
+
+@using (@Html.BeginForm("Confirm", "Admin", FormMethod.Post))
+{
+
+    <input type="hidden" value=@Model.bookid name="bookid"/>
+    <input type="hidden" value=@Model.serviceid name="serviceid" />
+    <input type="hidden" value=@Model.userid name="userid" />
+    <input type="hidden" value=@Model.confirmstatus name="confirmstatus" />
+        <div>
+            <label class="col-sm-5 control-label">@Model.service</label>
+        </div>
+        @*<div class="col-sm-6">
+            <input type="text" class="form-control" value="@Model.service" name="service" />
+            @Html.ValidationMessageFor(x => x.service)
+        </div>*@
+        <div>
+            <label class="col-sm-5 control-label">Description</label>
+            <div class="col-sm-6">
+                @*<input type="text" class="form-control" value="@Model.description" name="description" placeholder="Enter your requirement" />
+                @Html.ValidationMessageFor(x => x.description)*@
+
+                <label class="col-sm-5 control-label">@Model.description</label>
+            </div>
+        </div>
+        <div>
+            <label class="col-sm-5 control-label">Date</label>
+            <div class="col-sm-6">
+                <label class="col-sm-5 control-label">@Model.bookdate</label>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Confirm" />
+        </div>
+
+
+
+}
+
+
+
+

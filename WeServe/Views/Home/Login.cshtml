@@ -1,0 +1,38 @@
+﻿@model WeServe.Models.LoginModel
+
+
+@{
+    Layout = "~/Views/Shared/Serve_OuterLayout.cshtml";
+
+}
+
+
+<h2>Login</h2>
+@using (@Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <div>USERNAME</div>
+    <div>
+        <input type="text" name="Username" value="@Model.Username" />
+        @*@Html.ValidationMessageFor(x => x.Username)*@
+    </div>
+    <br /><br /><br />
+    <div>PASSWORD</div><br />
+    <div>
+        <input type="text" name="Password" value="@Model.Password" />
+        @*@Html.ValidationMessageFor(x => x.Password)*@
+    </div>
+
+    <br /><br />
+    <div>
+        <input type="submit" value="LOGIN" />
+
+
+        @*<a href="/User/Create">SIGN UP</a>*@
+    </div>
+    <br /><br />
+
+
+
+}
+
+

@@ -1,0 +1,89 @@
+﻿
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Serve_OuterLayout";
+}
+
+<h2>Serve_OuterLayout</h2>
+
+
+
+
+<html>
+
+
+<head>
+
+
+    <title>
+        We Serve
+    </title>
+    <link rel="stylesheet" href="~/css/newstyle.css" type="text/css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery.validate.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+
+        <div class="heading">
+            We Serve
+            <div align="center"><img src="~/pics/id.png" style="width:200px;height:100px;" /></div>
+        </div>
+
+        <div class="navigation" align="center">
+            @*<a href="~/Views/Home/Index.cshtml">Home</a>*@
+            <a href="@Url.Action("ContactUs","Home", new {area="admin"})">Contact Us</a>
+            <a href="@Url.Action("CreateUser","Home", new {area="admin"})">Register</a>
+            <a href="@Url.Action("Login","Home", new {area="admin"})">SignIn</a>
+
+
+
+        </div>
+
+
+        <div class="content">
+
+            @RenderBody()
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+        </div>
+
+        <div class="sidebar">
+            @*<div align="center"><img src="~/pics/cart.png" style="width:200px;height:100px;"/></div>*@
+            <div align="center">
+                @*<a href="~/Views/Home/AboutUs.cshtml">About Us</a><br />
+                    <a href="~/Views/Home/ContactUs.cshtml">Contact Us</a><br />
+                    <a href="~/Views/Home/Index.cshtml">Home</a><br />
+                    <a href="~/Views/Home/Login.cshtml">Login</a><br />*@
+            </div><br />
+            <br />
+            <div>We provide services to other countries...</div>
+        </div>
+
+
+        <div class="footer" align="center">
+            Copyright WeServe Publications
+        </div>
+
+
+    </div>
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        
+    }
+
+</body>
+
+
+
+</html>
+

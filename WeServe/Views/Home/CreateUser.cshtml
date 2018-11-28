@@ -1,0 +1,68 @@
+﻿@model WeServe.TbUser
+@{
+    ViewBag.Title = "Create";
+
+    Layout = "~/Views/Shared/Serve_OuterLayout.cshtml";
+}
+<h2>CreateUser</h2>
+
+@using (@Html.BeginForm("CreateUser", "Home", FormMethod.Post))
+{
+
+
+    <div>
+        User ID
+        @Html.LabelFor(model => model.UserId)
+
+    </div>
+    <div>
+        First Name:
+        @Html.EditorFor(model => model.UserName)
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+    <div>
+        Password:
+        @Html.EditorFor(model => model.Password)
+
+    </div>
+    <div>
+        First Name:
+        @Html.EditorFor(model => model.FirstName)
+
+    </div>
+    <div>
+        Last Name:
+        @Html.EditorFor(model => model.LastName)
+
+    </div>
+    <div>
+        DOB:
+        @Html.EditorFor(model => model.DOB)
+
+    </div>
+    <div>
+        Email:
+        @Html.EditorFor(model => model.Email)
+
+    </div>
+    <div>
+        Phone:
+        @Html.EditorFor(model => model.Phone)
+
+    </div>
+    <div>
+        Address:
+        @Html.EditorFor(model => model.Address)
+
+    </div>
+    @*<div>
+            <input type="file" name="Photo" />
+        </div>*@
+    <div>
+        <input type="submit" value="Submit" />
+
+    </div>
+
+}
+
+

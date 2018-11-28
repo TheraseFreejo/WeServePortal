@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WeServe.Models.BookingModel>
+@{
+    ViewBag.Title = "ViewBookings";
+    Layout = "~/Views/Shared/Serve_AdminLayout.cshtml";
+}
+
+<h2>ViewBookings</h2>
+<table>
+    <thead class="thead-default">
+        <tr>
+
+            <th data-priority="3">BookId</th>
+            <th data-priority="3">Date</th>
+            <th data-priority="2">description</th>
+            <th data-priority="2">userid</th>
+            <th data-priority="3">username</th>
+            <th data-priority="2">service id</th>
+            <th data-priority="2">service</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.bookid</td>
+                <td>@o.bookdate</td>
+                <td>@o.description</td>
+                <td>@o.userid</td>
+                <td>@o.username</td>
+                <td>@o.serviceid</td>
+                <td>@o.service</td>
+                <td>@Html.ActionLink("Confirm Booking", "Confirm", new { id = o.bookid }, null)</td>
+            </tr>
+        }
+    
+    </tbody>
+</table>
