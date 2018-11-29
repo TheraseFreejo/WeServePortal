@@ -80,37 +80,41 @@ namespace WeServe.Controllers
         [HttpGet]
         public ActionResult CreateUser()
         {
-            TbUser model = new TbUser();
+            UserModel model = new UserModel();
             return View(model);
         }
         [HttpPost]
-        public ActionResult CreateUser(TbUser model)
+        public ActionResult CreateUser(UserModel model)
         {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+                #region "Declaration"
+                // BookingModel m = new BookingModel();
+                #endregion
 
-            #region "Declaration"
-           // BookingModel m = new BookingModel();
-            #endregion
+                #region "Create a new user and save it to database"
+                #endregion
+                using (var db = new weserveEntities())
+                {
+                    TbUser u = new TbUser();
+                    u.UserName = model.UserName;
+                    u.FirstName = model.FirstName;
+                    u.LastName = model.LastName;
+                    u.DOB = model.DOB;
+                    u.Password = model.Password;
+                    u.Email = model.Email;
+                    u.Phone = model.Phone;
+                    u.Address = model.Address;
+                    u.Role = "member";
 
-            #region "Create a new user and save it to database"
-
-            #endregion
-            using (var db = new weserveEntities())
-            {
-                TbUser u = new TbUser();
-                u.UserName = model.UserName;
-                u.FirstName = model.FirstName;
-                u.LastName = model.LastName;
-                u.DOB = model.DOB;
-                u.Password = model.Password;
-                u.Email = model.Email;
-                u.Phone = model.Phone;
-                u.Address = model.Address;
-                u.Role = "member";
-
-                db.TbUsers.Add(u);
-                db.SaveChanges();
+                    db.TbUsers.Add(u);
+                    db.SaveChanges();
+                
+                return RedirectToAction("Login", "Home", new { area = "" });
             }
-            return RedirectToAction("Login", "Home", new { area = "" });
+            
         }
     }  
         

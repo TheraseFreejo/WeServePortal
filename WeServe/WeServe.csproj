@@ -161,7 +161,6 @@
     <Content Include="css\newstyle.css" />
     <Content Include="css\stylesheet.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="GitHtml.html" />
     <Content Include="Global.asax" />
     <Content Include="ModelWeServe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -235,6 +234,7 @@
     <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ServiceDDLViewmodel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="ModelWeServe.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

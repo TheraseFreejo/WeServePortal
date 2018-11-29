@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-    width: 600px;
+    width: 800px;
     margin: 0 auto 0 auto;
     border: thick;
     border-color: black;
@@ -24,7 +24,7 @@
 }
 
 .navigation {
-    height: 50px;
+    height: 40px;
     border: thick;
     border-color: black;
     border-width: thin;
@@ -32,7 +32,7 @@
 }
 
 .content {
-    height: 400px;
+    height: 800px;
     width: 200px;
     float: left;
     /*background: #0094ff;*/

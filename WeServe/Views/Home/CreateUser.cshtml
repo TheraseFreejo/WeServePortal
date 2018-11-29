@@ -1,4 +1,4 @@
-﻿@model WeServe.TbUser
+﻿@model WeServe.Models.UserModel
 @{
     ViewBag.Title = "Create";
 
@@ -17,42 +17,43 @@
     </div>
     <div>
         First Name:
-        @Html.EditorFor(model => model.UserName)
+        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } }))
         @Html.ValidationMessageFor(model => model.UserName)
     </div>
     <div>
         Password:
-        @Html.EditorFor(model => model.Password)
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+        @*@Html.EditorFor(model => model.Password)*@
 
     </div>
     <div>
         First Name:
-        @Html.EditorFor(model => model.FirstName)
+        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First name" } }))
 
     </div>
     <div>
         Last Name:
-        @Html.EditorFor(model => model.LastName)
+        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last name" } }))
 
     </div>
     <div>
         DOB:
-        @Html.EditorFor(model => model.DOB)
+        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "DOb" } }))
 
     </div>
     <div>
         Email:
-        @Html.EditorFor(model => model.Email)
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } }))
 
     </div>
     <div>
         Phone:
-        @Html.EditorFor(model => model.Phone)
+        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone" } }))
 
     </div>
     <div>
         Address:
-        @Html.EditorFor(model => model.Address)
+        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } }))
 
     </div>
     @*<div>
