@@ -34,44 +34,57 @@ namespace WeServe.Controllers
             return View(obj);
         }
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public JsonResult Login(string txtuname,string txtpass)
         {
             TbUser u = new TbUser();
 
             #region "Declaration"
-          //  BookingModel m = new BookingModel();
+            //  BookingModel m = new BookingModel();
+            LoginModel m = new LoginModel();
             #endregion
 
             #region "Select Data from DB and copy to Model"
             using (var db = new weserveEntities())
             {
+                m.Username = txtuname;
+                m.Password = txtpass;
                 var objLogin = (from x in db.TbUsers
-                                where x.UserName == model.Username && x.Password == model.Password
+                                where x.UserName == txtuname && x.Password == txtpass
                                 select x).FirstOrDefault();
+
+
+
 
                 if (objLogin == null)
                 {
                     ModelState.AddModelError("UserName", "Unauthorized to view contents");
-                    return View(model);
+                  //  return View(m);
+                    return Json(new { redirectTo = Url.Action("Login", "Home"),m }, JsonRequestBehavior.AllowGet);
                 }
                 else
-                model.usertype = objLogin.Role;
+                m.usertype = objLogin.Role;
 
 
             }
             #endregion
 
-            FormsAuthentication.SetAuthCookie(model.Username, false);
+            FormsAuthentication.SetAuthCookie(m.Username, false);
             var myCookie = new HttpCookie("myCookie");//instantiate an new cookie and give it a name
-            myCookie.Values.Add("Username", model.Username.ToString());//populate it with key, value pairs
+            myCookie.Values.Add("Username", m.Username.ToString());//populate it with key, value pairs
             Response.Cookies.Add(myCookie);//add it to the client
                                            //     string status = "OK";
-            
-            if(model.usertype == "admin")
-            return RedirectToAction("Index","Admin", new { area = "" });
+
+            if (m.usertype == "admin")
+               //  return RedirectToAction("Index","Admin", new { area = "" });
+                //return View("~/Views/Admin/Index.cshtml");
+                return Json(new { redirectTo = Url.Action("Index", "Admin"), }, JsonRequestBehavior.AllowGet);
+
             else
-                return RedirectToAction("HomePage", "Home", new { area = "" });
+                return Json(new { redirectTo = Url.Action("HomePage", "Home"), }, JsonRequestBehavior.AllowGet);
+            // return View("~/Views/Home/HomePage.cshtml");
+            // return RedirectToAction("HomePage", "Home", new { area = "" });
         }
+
         public ActionResult ContactUs()
         {
             return View();
@@ -84,35 +97,46 @@ namespace WeServe.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult CreateUser(UserModel model)
+        public JsonResult CreateUser(string txtuname,string txtpass,string txtfname,string txtlname,string txtdob,string txtphone,string txtemail,string txtaddress)
         {
-                if (!ModelState.IsValid)
-                {
-                    return View(model);
-                }
-                #region "Declaration"
-                // BookingModel m = new BookingModel();
-                #endregion
-
-                #region "Create a new user and save it to database"
-                #endregion
-                using (var db = new weserveEntities())
-                {
-                    TbUser u = new TbUser();
-                    u.UserName = model.UserName;
-                    u.FirstName = model.FirstName;
-                    u.LastName = model.LastName;
-                    u.DOB = model.DOB;
-                    u.Password = model.Password;
-                    u.Email = model.Email;
-                    u.Phone = model.Phone;
-                    u.Address = model.Address;
-                    u.Role = "member";
-
-                    db.TbUsers.Add(u);
-                    db.SaveChanges();
                 
-                return RedirectToAction("Login", "Home", new { area = "" });
+                #region "Declaration"
+                 UserModel m = new UserModel();
+            #endregion
+            m.UserName = txtuname;
+            m.Password = txtpass;
+            m.FirstName = txtfname;
+            m.LastName = txtlname;
+            m.DOB = Convert.ToDateTime(txtdob);
+            m.Phone = txtphone;
+            m.Email = txtemail;
+            m.Address = txtaddress;
+            if (!ModelState.IsValid)
+            {
+                //  return Json(new { redirectTo = Url.Action("CreateUser", "Home"), }, JsonRequestBehavior.AllowGet);
+                //  return View(mod);
+                return Json(m);
+            }
+            #region "Create a new user and save it to database"
+            #endregion
+            using (var db = new weserveEntities())
+            {
+                TbUser u = new TbUser();
+                u.UserName = txtuname;
+                u.FirstName = txtfname;
+                u.LastName = txtlname;
+                u.DOB = Convert.ToDateTime(txtdob);
+                u.Password = txtpass;
+                u.Email = txtemail;
+                u.Phone = txtphone;
+                u.Address = txtaddress;
+                u.Role = "member";
+                db.TbUsers.Add(u);
+                db.SaveChanges();
+                return Json(m);
+                // return Json(new { redirectTo = Url.Action("Login", "Home"), }, JsonRequestBehavior.AllowGet);
+
+
             }
             
         }

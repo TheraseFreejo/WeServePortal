@@ -1,89 +1,163 @@
-﻿
-@using System.Web.Optimization
-@{
-    ViewBag.Title = "Serve_OuterLayout";
-}
-
-<h2>Serve_OuterLayout</h2>
-
-
-
-
-<html>
-
-
-<head>
-
-
-    <title>
-        We Serve
-    </title>
-    <link rel="stylesheet" href="~/css/newstyle.css" type="text/css" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="/Scripts/jquery.validate.js"></script>
-    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
-
-    <script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
-
-
-</head>
-
-<body>
-
-    <div class="wrapper">
-
-
-        <div class="heading">
-            We Serve
-            <div align="center"><img src="~/pics/id.png" style="width:200px;height:100px;" /></div>
-        </div>
-
-        <div class="navigation" align="center">
-            @*<a href="~/Views/Home/Index.cshtml">Home</a>*@
-            <a href="@Url.Action("ContactUs","Home", new {area="admin"})">Contact Us</a>
-            <a href="@Url.Action("CreateUser","Home", new {area="admin"})">Register</a>
-            <a href="@Url.Action("Login","Home", new {area="admin"})">SignIn</a>
-
-
-
-        </div>
-
-
-        <div class="content">
-
-            @RenderBody()
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
-        </div>
-
-        <div class="sidebar">
-            @*<div align="center"><img src="~/pics/cart.png" style="width:200px;height:100px;"/></div>*@
-            <div align="center">
-                @*<a href="~/Views/Home/AboutUs.cshtml">About Us</a><br />
-                    <a href="~/Views/Home/ContactUs.cshtml">Contact Us</a><br />
-                    <a href="~/Views/Home/Index.cshtml">Home</a><br />
-                    <a href="~/Views/Home/Login.cshtml">Login</a><br />*@
-            </div><br />
-            <br />
-            <div>We provide services to other countries...</div>
-        </div>
-
-
-        <div class="footer" align="center">
-            Copyright WeServe Publications
-        </div>
-
-
-    </div>
-    @section scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        
+﻿@*@using System.Web.Optimization
+    @{
+        ViewBag.Title = "Serve_OuterLayout";
     }
 
-</body>
+    <h2>Serve_OuterLayout</h2>
 
 
 
-</html>
+
+    <html>
+
+
+    <head>
+
+
+        <title>
+            We Serve
+        </title>
+        <link rel="stylesheet" href="~/css/newstyle.css" type="text/css" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="/Scripts/jquery.validate.js"></script>
+        <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        <script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+
+
+            <div class="heading">
+
+                <div align="center"><img src="~/pics/id.png" style="width:600px;height:100px;" /></div>
+            </div>
+
+            <div class="navigation" align="center">
+
+
+                <a href="@Url.Action("CreateUser","Home", new {area="admin"})"><bold>Sign Up</bold></a>
+                <a href="@Url.Action("Login","Home", new {area="admin"})"><bold>Sign Up</bold></a>
+
+
+
+            </div>
+
+
+            <div class="leftcontent">
+                We Serve
+                Our company...............
+                <div align="center"><h1><bold>We Serve</bold></h1></div>
+                <div><img src="~/pics/id.png" style="height:400px"/></div>
+
+            </div>
+
+            <div class="sidecontent" >
+                @RenderBody()
+
+                @Scripts.Render("~/bundles/jquery")
+                @Scripts.Render("~/bundles/bootstrap")
+                @RenderSection("scripts", required: false)
+            </div>
+
+
+            <div class="footer" align="center">
+                Copyright WeServe Publications
+            </div>
+
+
+        </div>
+        @section scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+
+        }
+
+    </body>
+
+
+
+    </html>*@
+@using System.Web.Optimization
+    @{
+        //ViewBag.Title = "Serve_OuterLayout";
+    }
+
+    <h2>Serve_OuterLayout</h2>
+
+
+
+
+    <html>
+
+
+    <head>
+        <title>Login V13</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="~/css/main.css">
+        <link rel="stylesheet" type="text/css" href="~/css/util.css">
+        <!--===============================================================================================-->
+
+        <title>
+            We Serve
+        </title>
+        <link rel="stylesheet" href="~/css/newstyle.css" type="text/css" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="/Scripts/jquery.validate.js"></script>
+        <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        <script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+
+    </head>
+  
+
+    <body style="background-color: #999999;">
+
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="login100-more" style="background-image: url('../../images/bg-01.jpg');"></div>
+
+                <div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+                    @RenderBody()
+
+                    @Scripts.Render("~/bundles/jquery")
+                    @Scripts.Render("~/bundles/bootstrap")
+                    @RenderSection("scripts", required: false)
+
+
+                </div>
+            </div>
+        </div>
+        @section scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+
+        }
+    </body>
+        </html>
 

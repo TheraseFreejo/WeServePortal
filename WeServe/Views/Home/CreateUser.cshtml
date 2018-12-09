@@ -1,29 +1,174 @@
 ﻿@model WeServe.Models.UserModel
 @{
+    /**/
+
+    /**/
+
+    /**/
+
     ViewBag.Title = "Create";
 
     Layout = "~/Views/Shared/Serve_OuterLayout.cshtml";
 }
 <h2>CreateUser</h2>
 
-@using (@Html.BeginForm("CreateUser", "Home", FormMethod.Post))
-{
+@*@using (@Html.BeginForm("CreateUser", "Home", FormMethod.Post))
+    {*@
+
+@*<form class="login100-form validate-form">*@
+<span class="login100-form-title p-b-59">
+    Sign Up
+</span>
+@*<div>
+        User ID
+        @Html.LabelFor(model => model.UserId)
+
+    </div>*@
+<div class="wrap-input100 validate-input" data-validate="Username is required">
+    <span class="label-input100">Username</span>
+    <input class="input100" type="text" value="@Model.UserName" id="txtuname" name="UserName" placeholder="Username...">
+    @Html.ValidationMessageFor(x => x.UserName)
+    <span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input" data-validate="Password is required">
+    <span class="label-input100">Password</span>
+    <input class="input100" type="text" value="@Model.Password" id="txtpass" name="Password" placeholder="*************">
+    @Html.ValidationMessageFor(x => x.Password)
+    <span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" data-validate="Username is required">
+    <span class="label-input100">FirstName</span>
+    <input class="input100" type="text" value="@Model.FirstName" name="FirstName" id="txtfname" placeholder="FirstName...">
+    @Html.ValidationMessageFor(x => x.FirstName)
+    <span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input" data-validate="Password is required">
+    <span class="label-input100">LastName</span>
+    <input class="input100" type="text" value="@Model.LastName" name="LastName" id="txtlname" placeholder="LastName">
+    @Html.ValidationMessageFor(x => x.LastName)
+    <span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" data-validate="Username is required">
+    <span class="label-input100">DOB</span>
+    <input class="input100" type="text" value="@Model.DOB" name="DOB" id="txtdob" placeholder="DOB...">
+    @Html.ValidationMessageFor(x => x.DOB)
+    <span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input" data-validate="Password is required">
+    <span class="label-input100">Phone</span>
+    <input class="input100" type="text" value="@Model.Phone" name="Phone" id="txtphone" placeholder="Phone">
+    @Html.ValidationMessageFor(x => x.Phone)
+    <span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" data-validate="Username is required">
+    <span class="label-input100">Email</span>
+    <input class="input100" type="text" value="@Model.Email" id="txtemail" name="Email" placeholder="Email...">
+    @Html.ValidationMessageFor(x => x.Email)
+    <span class="focus-input100"></span>
+</div>
+
+<div class="wrap-input100 validate-input" data-validate="Password is required">
+    <span class="label-input100">Address</span>
+    <input class="input100" type="text" value="@Model.Address" id="txtaddress" name="Address" placeholder="Address">
+    @Html.ValidationMessageFor(x => x.Address)
+    <span class="focus-input100"></span>
+</div>
+
+<div class="flex-m w-full p-b-33">
+    <div class="contact100-form-checkbox">
+        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+        <label class="label-checkbox100" for="ckb1">
+            <span class="txt1">
+                I agree to the
+                <a href="#" class="txt2 hov1">
+                    Terms of User
+                </a>
+            </span>
+        </label>
+    </div>
 
 
-    <div>
+</div>
+<div id="divSignin" class="container-login100-form-btn">
+    <a id="aSignin" href="javascript:void(0)" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+        Sign in
+        <i class="fa fa-long-arrow-right m-l-5"></i>
+    </a>
+</div>
+
+@section scripts{
+
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>*@
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            
+            $("#aSignin").click(function () {
+                
+                var user = {};
+                user.UserName = $("#txtuname").val();
+                user.Password = $("#txtpass").val();
+                user.FirstName = $("#txtfname").val();
+                user.LastName = $("#txtlname").val();
+                user.DOB = $("#txtdob").val();
+                user.Phone = $("#txtphone").val();
+                user.Email = $("#txtemail").val();
+                user.Address = $("#txtaddress").val();
+
+                //$.ajax({
+                //    type: "POST",
+                //    url: "CreateUser/home",                            //Your Action name in the DropDownListConstroller.cs
+                //    data: '{user: ' + JSON.stringify(user) + '}',
+                //    dataType: "json",
+                //    contentType: "application/json; charset=utf-8",
+                //    success: function (data) {
+                //        window.location.href = data.redirectTo;
+                //    }
+
+
+                //});
+              
+                $.ajax({
+                    type: "POST",
+                    url: "CreateUser/home",                            //Your Action name in the DropDownListConstroller.cs
+                    data: "{'txtuname':'" + $('#txtuname').val() + "','txtpass':'" + $('#txtpass').val() + "','txtfname':'" + $('#txtfname').val() + "','txtlname':'" + $('#txtlname').val() + "','txtdob':'" + $('#txtdob').val() + "','txtphone':'" + $('#txtphone').val() + "','txtemail':'" + $('#txtemail').val() + "','txtaddress':'" + $('#txtaddress').val() + "'}",  
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        alert("Hi: " + response.UserName + ",  Your details have been added successfully ..  .\n");
+                    },
+                    failure: function (response) {
+                        alert(response.UserName);
+                    },
+                    error: function (response) {
+                        alert(response.UserName);
+                    }
+                });
+            });
+        });
+    </script>
+    }
+
+
+
+@*<div>
         User ID
         @Html.LabelFor(model => model.UserId)
 
     </div>
     <div>
-        First Name:
+        User Name:
         @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } }))
         @Html.ValidationMessageFor(model => model.UserName)
     </div>
     <div>
         Password:
         @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
-        @*@Html.EditorFor(model => model.Password)*@
+        @Html.EditorFor(model => model.Password)
 
     </div>
     <div>
@@ -56,14 +201,12 @@
         @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } }))
 
     </div>
-    @*<div>
-            <input type="file" name="Photo" />
-        </div>*@
+
     <div>
         <input type="submit" value="Submit" />
 
-    </div>
+    </div>*@
 
-}
+@*}*@
 
 

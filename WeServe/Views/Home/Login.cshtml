@@ -2,37 +2,104 @@
 
 
 @{
+    /**/
+
+    /**/
+
     Layout = "~/Views/Shared/Serve_OuterLayout.cshtml";
 
 }
+@*@using (@Html.BeginForm("Login", "Home", FormMethod.Post))
+    {*@
+
+@*<form class="login100-form validate-form">*@
+<span class="login100-form-title p-b-59">
+    Please enter your credentials
+</span>
+<div class="wrap-input100 validate-input" data-validate="Username is required">
+    <span class="label-input100">Username</span>
+    <input class="input100" type="text" value="@Model.Username" id="txtuname" name="Username" placeholder="Username...">
+    @Html.ValidationMessageFor(x => x.Username)
+    @*<span class="focus-input100"></span>*@
+</div>
+
+<div class="wrap-input100 validate-input" data-validate="Password is required">
+    <span class="label-input100">Password</span>
+    <input class="input100" type="text" value="@Model.Password" id="txtpass" name="Password" placeholder="*************">
+    @Html.ValidationMessageFor(x => x.Password)
+    @*<span class="focus-input100"></span>*@
+</div>
 
 
-<h2>Login</h2>
-@using (@Html.BeginForm("Login", "Home", FormMethod.Post))
-{
-    <div>USERNAME</div>
+<div class="flex-m w-full p-b-33">
+    <div class="contact100-form-checkbox">
+        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+        <label class="label-checkbox100" for="ckb1">
+            <span class="txt1">
+                I agree to the
+                <a href="#" class="txt2 hov1">
+                    Terms of User
+                </a>
+            </span>
+        </label>
+    </div>
+
+
+</div>
+<div id="divSignin" class="container-login100-form-btn">
+    <a id="aSignin" href="javascript:void(0)" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+        Sign in
+        <i class="fa fa-long-arrow-right m-l-5"></i>
+    </a>
+</div>
+
+
+
+
+@*}*@
+@*<div>
+        <input type="submit" value="LOGIN" class="login100-form-btn" />
+    </div>*@
+@*</form>*@
+
+@*<div>USERNAME</div>
     <div>
         <input type="text" name="Username" value="@Model.Username" />
-        @*@Html.ValidationMessageFor(x => x.Username)*@
+        @Html.ValidationMessageFor(x => x.Username)
     </div>
     <br /><br /><br />
     <div>PASSWORD</div><br />
     <div>
         <input type="password" name="Password" value="@Model.Password" />
-        @*@Html.ValidationMessageFor(x => x.Password)*@
+        @Html.ValidationMessageFor(x => x.Password)
     </div>
 
     <br /><br />
     <div>
         <input type="submit" value="LOGIN" />
-
-
-        @*<a href="/User/Create">SIGN UP</a>*@
     </div>
-    <br /><br />
+    <br /><br />*@
 
 
 
+@section scripts{
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#aSignin").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "login/home",                            //Your Action name in the DropDownListConstroller.cs
+                    data: "{'txtuname':'" + $('#txtuname').val() + "','txtpass':'" + $('#txtpass').val() + "'}",  //Parameter in this function, Is case sensitive and also type must be string
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        window.location.href = data.redirectTo;
+                    }
+                   
+
+                });
+        });
+    });
+    </script>
 }
-
-

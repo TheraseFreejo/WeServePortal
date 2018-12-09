@@ -85,10 +85,7 @@ namespace WeServe.Controllers
         
 
             else
-                return View(model);
-            
-
-          
+                return View(model); 
             
         }
 

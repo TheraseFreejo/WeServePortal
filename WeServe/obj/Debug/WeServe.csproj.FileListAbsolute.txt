@@ -138,7 +138,6 @@ D:\Therase\GithubProjects\WeServe\WeServe\bin\System.Web.Webpages.Deployment.xml
 D:\Therase\GithubProjects\WeServe\WeServe\bin\System.Web.Webpages.Razor.xml
 D:\Therase\GithubProjects\WeServe\WeServe\bin\System.Web.Helpers.xml
 D:\Therase\GithubProjects\WeServe\WeServe\bin\System.Web.Mvc.xml
-D:\Therase\GithubProjects\WeServe\WeServe\obj\Debug\WeServe.csprojAssemblyReference.cache
 D:\Therase\GithubProjects\WeServe\WeServe\obj\Debug\WeServe.csproj.CoreCompileInputs.cache
 D:\Therase\GithubProjects\WeServe\WeServe\obj\Debug\WeServe.csproj.CopyComplete
 D:\Therase\GithubProjects\WeServe\WeServe\obj\Debug\WeServe.dll
